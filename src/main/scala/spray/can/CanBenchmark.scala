@@ -5,8 +5,6 @@ package spray.can
 
 import akka.actor.{Props, ActorSystem}
 import akka.io.IO
-import spray.can.Http
-import spray.http.Uri.Path.Slash
 
 object Main extends App {
 
@@ -28,18 +26,11 @@ import StatusCodes._
 
 class CanBenchmark extends Actor {
   import context.dispatcher // ExecutionContext for scheduler
-  import Uri._
-  import Uri.Path._
-
-  def fastPath: Http.FastPath = {
-    case HttpRequest(GET, Uri(_, _, Slash(Segment("fast-ping", Path.Empty)), _, _), _, _, _) =>
-      HttpResponse(entity = "FAST-PONG!")
-  }
 
   def receive = {
 
     // when a new connection comes in we register ourselves as the connection handler
-    case _: Http.Connected => sender ! Http.Register(self, fastPath = fastPath)
+    case _: Http.Connected => sender ! Http.Register(self)
 
     case HttpRequest(GET, Uri.Path("/ping"), _, _, _) => sender ! HttpResponse(entity = "PONG!")
 
