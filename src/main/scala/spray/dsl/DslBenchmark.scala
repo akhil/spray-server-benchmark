@@ -10,8 +10,8 @@ object DslBenchmark extends App with SimpleRoutingApp {
   implicit val system = ActorSystem("my-system")
 
   startServer(interface = "localhost", port = 8080) {
-    path("ping") {
-      get {
+    get {
+      path("ping") {
         complete { "PONG!" }
       }
     }/* ~ path("hello") {

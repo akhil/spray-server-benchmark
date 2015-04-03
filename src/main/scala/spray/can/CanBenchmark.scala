@@ -31,7 +31,6 @@ class CanBenchmark extends Actor {
   import Uri._
   import Uri.Path._
 
-
   def fastPath: Http.FastPath = {
     case HttpRequest(GET, Uri(_, _, Slash(Segment("fast-ping", Path.Empty)), _, _), _, _, _) =>
       HttpResponse(entity = "FAST-PONG!")
