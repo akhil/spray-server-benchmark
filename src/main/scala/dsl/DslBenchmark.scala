@@ -14,6 +14,10 @@ object DslBenchmark extends App with SimpleRoutingApp {
       get {
         complete { "PONG!" }
       }
+    } ~ path("hello") {
+      get {
+        complete { "HELLO!" }
+      }
     }
   }
 }
