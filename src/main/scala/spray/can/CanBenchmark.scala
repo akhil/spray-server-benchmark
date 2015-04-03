@@ -1,7 +1,7 @@
 /**
  * Created by akhil on 4/2/15.
  */
-package can
+package spray.can
 
 import akka.actor.{Props, ActorSystem}
 import akka.io.IO

@@ -1,4 +1,4 @@
-package dsl
+package spray.dsl
 import akka.actor.ActorSystem
 import spray.http.StatusCodes
 import spray.routing.SimpleRoutingApp
@@ -14,10 +14,10 @@ object DslBenchmark extends App with SimpleRoutingApp {
       get {
         complete { "PONG!" }
       }
-    } ~ path("hello") {
+    }/* ~ path("hello") {
       get {
         complete { "HELLO!" }
       }
-    }
+    }*/
   }
 }
